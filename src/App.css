@@ -219,7 +219,7 @@ header {
   height: 40px;
 }
 
-header span {
+header span:not(.wrapperNav) {
   margin-right: 10px;
   width: auto;
   font-size: 16px;
@@ -264,10 +264,9 @@ header span {
 }
 
 .titleTodo {
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: #009688;
-  font-size: 18px;
+  font-size: 16px;
+  margin-right: 5px;
 }
 
 .todoIcons {
@@ -287,6 +286,31 @@ header span {
 .skeletonStyle {
   height: 15px;
   border-radius: 0px;
+}
+
+.navbarData {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.logoTitle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoImg {
+  width: 60px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.wrapperNav {
+  flex-grow: 1;
+  display: inherit;
 }
 
 /* scrollBar style */
