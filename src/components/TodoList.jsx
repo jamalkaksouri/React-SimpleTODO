@@ -4,7 +4,14 @@ import TodoForm from "./TodoForm";
 import getCurrentDateTime from "../common/dateTimeFunc";
 import _ from "lodash";
 
-const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
+const TodoList = ({
+  todos,
+  onComplete,
+  onDelete,
+  onEdit,
+  changeTodo,
+  noteShowHide,
+}) => {
   const [edit, setEdit] = useState({
     id: null,
     text: "",
@@ -30,6 +37,8 @@ const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
           onComplete={() => onComplete(todo.id)}
           onDelete={() => onDelete(todo.id)}
           onEdit={() => setEdit(todo)}
+          changeTodo={() => changeTodo(todo.id)}
+          noteShowHide={() => noteShowHide(todo.id)}
         />
       );
     });

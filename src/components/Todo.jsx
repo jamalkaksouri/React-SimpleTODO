@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   AiOutlineEdit,
   AiOutlineDelete,
@@ -11,57 +10,14 @@ import {
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
-  const [note, setNote] = useState({ isShow: false });
-  const [periority, setPeriority] = useState({
-    color: "#fff",
-    contentColor: "#fff",
-    counter: 0,
-  });
-
-  const noteShowHide = () => {
-    setNote({ isShow: !note.isShow });
-  };
-
-  const changePeriority = () => {
-    switch (periority.counter) {
-      case -1:
-        setPeriority({
-          ...periority,
-          color: "#fff",
-          contentColor: "#fff",
-          counter: periority.counter + 1,
-        });
-        break;
-      case 0:
-        setPeriority({
-          ...periority,
-          color: "#ff7700",
-          contentColor: "#FFF2E6",
-          counter: periority.counter + 1,
-        });
-        break;
-      case 1:
-        setPeriority({
-          ...periority,
-          color: "#ff3333",
-          contentColor: "#FFEEEE",
-          counter: periority.counter + 1,
-        });
-        break;
-      case 2:
-        setPeriority({
-          ...periority,
-          color: "#3377ff",
-          contentColor: "#EBF1FF",
-          counter: -1,
-        });
-        break;
-      default:
-        setPeriority({ ...periority, counter: 0 });
-        break;
-    }
-  };
+const Todo = ({
+  todo,
+  onComplete,
+  onDelete,
+  onEdit,
+  changeTodo,
+  noteShowHide,
+}) => {
   return (
     <div
       className={!todo.isCompleted ? "todo" : "todoIsCompleted"}
@@ -69,56 +25,52 @@ const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
         borderLeft: `${
           todo.isCompleted
             ? "1px solid rgb(225, 225, 225)"
-            : periority.counter === 0
+            : todo.counter === 0
             ? "1px solid #e1e1e1"
-            : `3px solid ${periority.color}`
+            : `3px solid ${todo.color}`
         }`,
       }}
-      {...(note.isShow && {
+      {...(todo.noteIsShow && {
         style: {
           paddingTop: "19px",
           borderLeft: `${
             todo.isCompleted
               ? "1px solid rgb(225, 225, 225)"
-              : periority.counter === 0
+              : todo.counter === 0
               ? "1px solid #e1e1e1"
-              : `3px solid ${periority.color}`
+              : `3px solid ${todo.color}`
           }`,
         },
       })}
     >
-      {periority.counter !== 0 && (
+      {todo.counter !== 0 && (
         <span
           className="periorityTodo"
-          {...(note.isShow
+          {...(todo.noteIsShow
             ? {
                 style: {
                   display: `${todo.isCompleted ? "none" : "block"}`,
-                  backgroundColor: `${
-                    todo.isCompleted ? "none" : periority.color
-                  }`,
-                  marginLeft: `${periority.counter < 0 && "-19px"}`,
-                  padding: `${periority.counter < 0 && "3px 3px 3px 7px"}`,
+                  backgroundColor: `${todo.isCompleted ? "none" : todo.color}`,
+                  marginLeft: `${todo.counter < 0 && "-19px"}`,
+                  padding: `${todo.counter < 0 && "3px 3px 3px 7px"}`,
                 },
               }
             : {
                 style: {
                   display: `${todo.isCompleted ? "none" : "block"}`,
-                  backgroundColor: `${
-                    todo.isCompleted ? "none" : periority.color
-                  }`,
-                  marginLeft: `${periority.counter < 0 && "-19px"}`,
-                  padding: `${periority.counter < 0 && "3px 3px 3px 7px"}`,
+                  backgroundColor: `${todo.isCompleted ? "none" : todo.color}`,
+                  marginLeft: `${todo.counter < 0 && "-19px"}`,
+                  padding: `${todo.counter < 0 && "3px 3px 3px 7px"}`,
                 },
               })}
         >
-          {periority.counter < 0 ? periority.counter : "+" + periority.counter}
+          {todo.counter < 0 ? todo.counter : "+" + todo.counter}
         </span>
       )}
       <div className={`${todo.isCompleted ? "completed" : ""}`}>
         <div className="todoIcons">
           <span onClick={noteShowHide}>
-            {note.isShow ? (
+            {todo.noteIsShow ? (
               <AiOutlineCaretDown color="#b2b2b2" />
             ) : (
               <AiOutlineCaretRight color="#b2b2b2" />
@@ -150,7 +102,7 @@ const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
       </div>
       <div className="todoIcons">
         <span className="dateTodo">
-          {todo.date || (
+          {todo.date.slice(0, -4) || (
             <Skeleton
               style={{ height: "18px", borderRadius: "0" }}
               baseColor="#eee"
@@ -163,9 +115,9 @@ const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
         <span className="hide">
           <span>
             <AiOutlineBars
-              onClick={changePeriority}
+              onClick={changeTodo}
               color="#009688"
-              title="Change Periority"
+              title="Change todo"
             />
           </span>
           <span>
@@ -180,12 +132,12 @@ const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
           </span>
         </span>
       </div>
-      {note.isShow && (
+      {todo.noteIsShow && (
         <div
           className="todoContent"
           style={{
-            backgroundColor: periority.contentColor,
-            borderLeft: `4px groove ${periority.color}`,
+            backgroundColor: todo.contentColor,
+            borderLeft: `4px groove ${todo.color}`,
           }}
         >
           {todo.content || (
@@ -202,5 +154,4 @@ const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
     </div>
   );
 };
-
 export default Todo;
