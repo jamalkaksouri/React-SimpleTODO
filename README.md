@@ -1,6 +1,10 @@
-![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td1.png)
+<p align="center">
+  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td1.png">
+  
+  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td2.png">
+</p>
+  
 
-![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td2.png)
 
 # Getting Started with Create React App
 
