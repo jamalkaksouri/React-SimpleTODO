@@ -1,4 +1,4 @@
-![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/1.png)
+![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/bg.png)
 
 ![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/2.png)
 
