@@ -1,38 +1,342 @@
+:root {
+  --todo-content-max-height: 383px;
+}
+
 .App {
-  text-align: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  margin-bottom: 30px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 40rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+}
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e1e1e1;
+  margin: 4px 0;
+  min-height: 60px;
+  flex-wrap: wrap;
+  border-radius: 0px 4px 4px 0px;
+  background-color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.todoIsCompleted {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e1e1e1;
+  min-height: 50px;
+  flex-wrap: wrap;
+  border-radius: 0px 4px 4px 0px;
+  background-color: #fff;
+  filter: grayscale(1);
+  margin: 5px 10px;
+  opacity: 0.7;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hide {
+  display: none !important;
+  margin-right: 8px;
+  min-width: 20px;
+}
+
+.todo:hover span:not(.periorityTodo) {
+  background-color: #f6f6f6;
+  display: inline-block !important;
+}
+
+.todo:hover span.dateTodo {
+  display: none !important;
+}
+
+.todo:hover {
+  background-color: #f6f6f6;
+}
+
+.dateTodo {
+  font-size: 14px;
+  margin-right: 18px;
+  color: #929292;
+}
+
+.menuDateTime {
+  display: flex;
+  flex-direction: column;
+}
+
+.periorityTodo {
+  display: block;
+  position: inherit;
+  margin-top: -44px;
+  margin-left: -19px;
+  padding: 3px;
+  line-height: 10px;
+  background-color: #3377ff;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 0 0 0 8px;
+}
+
+.todoContent {
+  height: auto;
+  width: auto;
+  min-width: -webkit-fill-available;
+  margin: 10px 10px 10px 54px;
+  padding: 10px;
+  border-left: 4px groove #cfcfcf;
+  background-color: #fef9c3;
+  border-radius: 0px 5px 5px 0px;
+  max-height: var(--todo-content-max-height);
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: justify;
+  line-height: 1.65rem;
+}
+
+.todoText {
+  cursor: pointer;
+  display: flex;
+  width: 0;
+  overflow: hidden;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.todoTextMain {
+  flex: 1 0 100%;
+  height: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+
+.todoText:hover .todoTextMain {
+  transition: 1.3s;
+  overflow: inherit;
+  margin-left: -100%;
+  text-overflow: inherit;
+  transition-timing-function: linear;
+}
+
+.todoText:hover .todoTextWrapper {
+  overflow: visible;
+  margin-left: 100%;
+  transition: 1.3s;
+  transition-timing-function: linear;
+}
+.todoTextWrapper {
+  text-overflow: inherit;
+  overflow: hidden;
+  flex: 1 0 100%;
+  display: flex;
+}
+
+.todoTitle {
+  flex-grow: 1;
+  width: 0;
+  height: 19px;
+  overflow: hidden;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  outline: none;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+input:focus {
+  border: 2px solid #009688;
+  overflow: hidden;
+}
+
+.formControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn {
+  color: #009688;
+  background-color: #fff;
+  border: 1px solid #009688;
+  border-radius: 4px;
+  outline: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 60px;
+  line-height: 0;
+  height: 40px;
+}
+
+.remove {
+  color: rgb(236, 68, 68);
+  border: 1px solid rgb(236, 68, 68);
+  margin-left: 10px;
+}
+
+.addTodo {
+  color: #fff;
+  background-color: #009688;
+}
+
+header {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 10px;
+  height: 40px;
+}
+
+header span {
+  margin-right: 10px;
+  width: auto;
+  font-size: 16px;
+  height: 20px;
+  background-color: #e5fffd;
+  color: #009688;
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #009688;
+  padding: 10px 5px;
+  font-weight: 600;
+}
+
+.copyRight {
+  color: #ccc;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.taskList {
+  max-height: 527px;
+  overflow: auto;
+  width: inherit;
+  overflow-x: hidden;
+  background-color: #eeeeee;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  padding: 10px 10px 10px 20px;
+}
+
+.taskListBeforTodo {
+  max-height: 502px;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #fff;
+  border-right: none;
+  border-left: none;
+  padding: 10px;
+}
+
+.titleTodo {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #009688;
+  font-size: 18px;
+}
+
+.todoIcons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 0;
+  font-size: 20px;
+}
+
+.todoIcons span {
+  display: flex;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.skeletonStyle {
+  height: 15px;
+  border-radius: 0px;
+}
+
+/* scrollBar style */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ccc;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(131, 131, 131);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #009688;
+}
+
+/* placeholder Color */
+::-webkit-input-placeholder {
+  color: #bbb;
+}
+:-moz-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+::-moz-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: #bbb;
+}
+::-ms-input-placeholder {
+  color: #bbb;
+}
+
+::placeholder {
+  color: #bbb;
+}
+
+/* ----------------------------------------------------------- */
+
+::-moz-selection {
+  background: #7aede3;
+}
+::selection {
+  background: #7aede3;
 }
