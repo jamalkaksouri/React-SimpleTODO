@@ -1,8 +1,6 @@
-![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/bg.png)
+![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td1.png)
 
-![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/2.png)
-
-![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/3.png)
+![alt text](https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td2.png)
 
 # Getting Started with Create React App
 
