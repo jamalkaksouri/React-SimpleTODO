@@ -1,7 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td1.png">
-  
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/td2.png">
+  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/todobg.png">
 </p>
   
 
