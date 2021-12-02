@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 10px;
 }
 .App h1 {
@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40rem;
+  width: 45rem;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -30,7 +30,7 @@
   align-items: center;
   border: 1px solid #e1e1e1;
   margin: 4px 0;
-  min-height: 60px;
+  min-height: 70px;
   flex-wrap: wrap;
   border-radius: 0px 4px 4px 0px;
   background-color: #fff;
@@ -48,6 +48,7 @@
   filter: grayscale(1);
   margin: 5px 10px;
   opacity: 0.7;
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.22, 0.91);
 }
 
 .hide {
@@ -83,7 +84,7 @@
 .periorityTodo {
   display: block;
   position: inherit;
-  margin-top: -44px;
+  margin-top: -55px;
   margin-left: -19px;
   padding: 3px;
   line-height: 10px;
@@ -97,7 +98,7 @@
   height: auto;
   width: auto;
   min-width: -webkit-fill-available;
-  margin: 10px 10px 10px 54px;
+  margin: 16px 10px 10px 54px;
   padding: 10px;
   border-left: 4px groove #cfcfcf;
   background-color: #fef9c3;
@@ -181,7 +182,6 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .btn {
@@ -223,15 +223,14 @@ header span:not(.wrapperNav) {
   margin-right: 10px;
   width: auto;
   font-size: 16px;
-  height: 20px;
-  background-color: #e5fffd;
-  color: #009688;
-  border-radius: 10%;
+  height: 30px;
+  background-color: #009688;
+  color: #ffffff;
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #009688;
-  padding: 10px 5px;
+  padding: 10px 8px;
   font-weight: 600;
 }
 
@@ -243,11 +242,11 @@ header span:not(.wrapperNav) {
 }
 
 .taskList {
-  max-height: 527px;
+  max-height: 607px;
   overflow: auto;
   width: inherit;
   overflow-x: hidden;
-  background-color: #eeeeee;
+  background-color: #ebebeb;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   padding: 10px 10px 10px 20px;
@@ -281,6 +280,7 @@ header span:not(.wrapperNav) {
   display: flex;
   margin-left: 8px;
   cursor: pointer;
+  align-items: end;
 }
 
 .skeletonStyle {
@@ -311,6 +311,30 @@ header span:not(.wrapperNav) {
 .wrapperNav {
   flex-grow: 1;
   display: inherit;
+}
+
+.dateStyle {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.sortStyle {
+  color: #009688;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-left: 5px;
+}
+
+.advancedBtn {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #009688;
 }
 
 /* scrollBar style */

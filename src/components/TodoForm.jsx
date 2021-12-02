@@ -41,6 +41,7 @@ const TodoForm = ({ edit, submitTodo }) => {
           )}
         </button>
       </div>
+      <p className="advancedBtn">advanced</p>
     </form>
   );
 };

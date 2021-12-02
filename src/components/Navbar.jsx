@@ -1,13 +1,18 @@
-const Navbar = ({ unCompletedTodos, completedTodos }) => {
+const Navbar = ({ All, Active, completed }) => {
   return (
     <header className="navbarData">
-      {unCompletedTodos ? (
+      {Active ? (
         <>
           <div className="wrapperNav">
-            <h2 className="titleTodo">Not completed todos</h2>
-            <span>{unCompletedTodos}</span>
-            <h2 className="titleTodo">Completed todos</h2>
-            <span>{completedTodos}</span>
+            <span>
+              All <h4 className="sortStyle">{All}</h4>
+            </span>
+            <span>
+              Active <h4 className="sortStyle">{Active}</h4>
+            </span>
+            <span>
+              Completed <h4 className="sortStyle">{completed}</h4>
+            </span>
           </div>
           <img className="logoImg" src="todoLogo.png" alt="TODO LOGO" />
         </>

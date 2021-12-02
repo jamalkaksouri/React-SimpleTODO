@@ -118,8 +118,9 @@ const TodoApp = () => {
   return (
     <div className="container">
       <Navbar
-        unCompletedTodos={todos.filter((todo) => !todo.isCompleted).length}
-        completedTodos={todos.filter((todo) => todo.isCompleted).length}
+        All={todos.length}
+        Active={todos.filter((todo) => !todo.isCompleted).length}
+        completed={todos.filter((todo) => todo.isCompleted).length}
       />
       <TodoForm submitTodo={addTodo} />
       <TodoList

@@ -6,6 +6,8 @@ import {
   AiOutlineCaretRight,
   AiOutlineCaretDown,
   AiOutlineBars,
+  AiOutlineFieldTime,
+  AiOutlineCalendar,
 } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -51,7 +53,7 @@ const Todo = ({
                 style: {
                   display: `${todo.isCompleted ? "none" : "block"}`,
                   backgroundColor: `${todo.isCompleted ? "none" : todo.color}`,
-                  marginLeft: `${todo.counter < 0 && "-19px"}`,
+                  marginLeft: `${todo.counter < 0 && "-20px"}`,
                   padding: `${todo.counter < 0 && "3px 3px 3px 7px"}`,
                 },
               }
@@ -59,7 +61,7 @@ const Todo = ({
                 style: {
                   display: `${todo.isCompleted ? "none" : "block"}`,
                   backgroundColor: `${todo.isCompleted ? "none" : todo.color}`,
-                  marginLeft: `${todo.counter < 0 && "-19px"}`,
+                  marginLeft: `${todo.counter < 0 && "-20px"}`,
                   padding: `${todo.counter < 0 && "3px 3px 3px 7px"}`,
                 },
               })}
@@ -101,16 +103,20 @@ const Todo = ({
         </div>
       </div>
       <div className="todoIcons">
-        <span className="dateTodo">
-          {todo.date.slice(0, -4) || (
-            <Skeleton
-              style={{ height: "18px", borderRadius: "0" }}
-              baseColor="#eee"
-              highlightColor="#ccc"
-              duration={1}
-              count={1}
-            />
-          )}
+        <span className="dateStyle">
+          <span
+            style={{ color: "#777", fontWeight: "500", fontSize: "15px" }}
+            className="dateTodo"
+          >
+            Due: {todo.date.slice(0, -4)}
+          </span>
+
+          <span
+            style={{ color: "#777", fontWeight: "500", fontSize: "15px" }}
+            className="dateTodo"
+          >
+            Added: {todo.date.slice(0, -4)}
+          </span>
         </span>
         <span className="hide">
           <span>
