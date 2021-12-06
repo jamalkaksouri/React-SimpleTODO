@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/todobg.png">
+  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/bgView.png">
 </p>
   
 
