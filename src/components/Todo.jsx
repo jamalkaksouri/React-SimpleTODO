@@ -6,8 +6,6 @@ import {
   AiOutlineCaretRight,
   AiOutlineCaretDown,
   AiOutlineBars,
-  AiOutlineFieldTime,
-  AiOutlineCalendar,
 } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -123,17 +121,17 @@ const Todo = ({
             <AiOutlineBars
               onClick={changeTodo}
               color="#009688"
-              title="Change todo"
+              title="Priority"
             />
           </span>
           <span>
-            <AiOutlineEdit onClick={onEdit} color="#009688" title="Edit TODO" />
+            <AiOutlineEdit onClick={onEdit} color="#009688" title="Edit" />
           </span>
           <span style={{ marginRight: "8px" }}>
             <AiOutlineDelete
               onClick={onDelete}
               color="#009688"
-              title="Delete TODO"
+              title="Delete"
             />
           </span>
         </span>

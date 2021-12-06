@@ -3,7 +3,6 @@
 }
 
 .App {
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,7 +161,7 @@
   color: #ccc;
 }
 
-input {
+.inputData {
   border: 2px solid #ccc;
   border-radius: 4px;
   padding: 5px;
@@ -173,7 +172,25 @@ input {
   margin-right: 10px;
 }
 
-input:focus {
+.datePickerStyle {
+  border: 2px solid #ccc;
+  font-size: 14px;
+  width: 160px !important;
+}
+
+.datePickerStyle:focus {
+  border: 2px solid #009688;
+  overflow: hidden;
+}
+
+.prioritySelect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 155px;
+}
+
+.inputData:focus {
   border: 2px solid #009688;
   overflow: hidden;
 }
@@ -195,6 +212,10 @@ input:focus {
   width: 60px;
   line-height: 0;
   height: 40px;
+}
+
+.btnAddTags {
+  width: 100%;
 }
 
 .remove {
@@ -280,7 +301,7 @@ header span:not(.wrapperNav) {
   display: flex;
   margin-left: 8px;
   cursor: pointer;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .skeletonStyle {
@@ -331,10 +352,103 @@ header span:not(.wrapperNav) {
 .advancedBtn {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 10px 0;
   font-size: 16px;
   color: #009688;
+}
+
+.advStyle {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  display: none;
+}
+
+.datePriority {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.react-datepicker-wrapper {
+  width: auto !important;
+  margin-left: 10px;
+}
+
+.tagsInput {
+  flex-grow: 1;
+  margin-right: 5px;
+}
+
+.btnAddTag {
+  width: auto;
+  height: 38px;
+}
+
+.noteMessage {
+  border: 2px solid #ccc;
+  resize: vertical;
+  border-radius: 4px;
+  margin-top: 4px;
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+  min-height: 150px;
+}
+
+.noteMessage:focus {
+  border: 2px solid #009688;
+  overflow: hidden;
+}
+
+.tagsWrapper {
+  margin: 10px 0;
+}
+
+.tagsBtnWrapper {
+  display: flex;
+  margin-top: 5px;
+}
+
+.react-datepicker__header {
+  background-color: #009688 !important;
+}
+
+.react-datepicker__input-time-container {
+  clear: both;
+  width: 100%;
+  margin: unset !important;
+  text-align: center !important;
+  background-color: #009688 !important;
+  color: #fff !important;
+}
+
+.react-datepicker__input-time-container
+  .react-datepicker-time__input-container
+  .react-datepicker-time__input
+  input[type="time"] {
+  -moz-appearance: textfield;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  margin: 3px 0;
+  padding: 0 2px;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  margin-top: 0;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 0.944rem;
+}
+
+label {
+  font-weight: 600;
+  color: #bbb;
 }
 
 /* scrollBar style */
