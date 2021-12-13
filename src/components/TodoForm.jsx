@@ -148,22 +148,6 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
           />
         </div>
       </div>
-      {/* <div className="sortWrapper">
-        <span>
-          Notes: <span className="showNote">Show</span>
-          <span>/</span>
-          <span className="showNote">Hide</span>
-        </span>
-        <span>
-          <Select
-            defaultValue={SortOptions[0]}
-            value={SortOptions[prioriry.selectedOption]}
-            onChange={priorityChange}
-            options={SortOptions}
-            styles={customStylesSort}
-          />
-        </span>
-      </div> */}
       <div
         className="advStyle"
         {...(advancedMenu.isShowMenu

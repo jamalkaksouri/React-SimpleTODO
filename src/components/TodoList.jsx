@@ -72,7 +72,7 @@ const TodoList = ({
 
   const showStickySortHandler = () => {
     const getScrollTopValue = document.querySelector("#todoDataList").scrollTop;
-    if (getScrollTopValue > 1) {
+    if (getScrollTopValue > 3) {
       setSticky(true);
     } else if (getScrollTopValue <= 0) {
       setSticky(false);
@@ -82,7 +82,7 @@ const TodoList = ({
   const renderTodos = () => {
     return (
       <>
-        {todos.length > 0 && (
+        {todos.length > 1 && (
           <div
             className={sticky ? "sortWrapper sortWrapperSticky" : "sortWrapper"}
           >
