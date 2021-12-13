@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/advancedBg.png">
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/bgView.png">
+  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/images/advancedBg.png">
+  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/images/bgView.png">
 </p>
   
 
