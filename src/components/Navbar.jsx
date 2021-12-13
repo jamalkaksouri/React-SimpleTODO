@@ -14,12 +14,12 @@ const Navbar = ({ All, Active, completed }) => {
               Completed <h4 className="sortStyle">{completed}</h4>
             </span>
           </div>
-          <img className="logoImg" src="todoLogo.png" alt="TODO LOGO" />
+          <img className="logoImg" src="/images/todoLogo.png" alt="TODO LOGO" />
         </>
       ) : (
         <div className="logoTitle">
           <h2 className="titleTodo">Set your today todos</h2>
-          <img className="logoImg" src="todoLogo.png" alt="TODO LOGO" />
+          <img className="logoImg" src="/images/todoLogo.png" alt="TODO LOGO" />
         </div>
       )}
     </header>

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { AiOutlinePlus, AiOutlineEdit, AiOutlineTag } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMenu, AiOutlineTag } from "react-icons/ai";
 import DateTimePicker from "./DateTimePicker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -43,6 +43,10 @@ const customStyles = {
   menuList: (base) => ({
     ...base,
   }),
+  indicatorSeparator: (base) => ({
+    ...base,
+    width: 2,
+  }),
 };
 const tagsStyles = {
   control: (base) => ({
@@ -67,9 +71,13 @@ const tagsStyles = {
   menuList: (base) => ({
     ...base,
   }),
+  indicatorSeparator: (base) => ({
+    ...base,
+    width: 2,
+  }),
 };
 
-const TodoForm = ({ edit, submitTodo }) => {
+const TodoForm = ({ edit, submitTodo, selectedOption }) => {
   const [input, setInput] = useState(edit ? edit.text : "");
   const [prioriry, setPrioriry] = useState({ selectedOption: null });
   const [advancedMenu, setAdvancedMenu] = useState({ isShowMenu: false });
@@ -82,6 +90,7 @@ const TodoForm = ({ edit, submitTodo }) => {
     setAdvancedMenu({
       isShowMenu: (advancedMenu.isShowMenu = !advancedMenu.isShowMenu),
     });
+    inputRef.current.focus();
   };
 
   const changeHandler = (e) => {
@@ -92,10 +101,12 @@ const TodoForm = ({ edit, submitTodo }) => {
     e.preventDefault();
     if (!input) {
       alert("input todo");
+      inputRef.current.focus();
       return;
     }
     submitTodo(input);
     setInput("");
+    inputRef.current.focus();
   };
 
   const priorityChange = (selectedOption) => {
@@ -105,30 +116,54 @@ const TodoForm = ({ edit, submitTodo }) => {
   return (
     <form style={{ width: "100%" }} onSubmit={submitHandler}>
       <div className="formControl">
-        <input
-          className="inputData"
-          type="text"
-          value={input}
-          onChange={changeHandler}
-          placeholder={edit ? "update todo" : "New task"}
-          ref={inputRef}
-          // maxLength="100"
-        />
-        <button className={`btn ${!edit && "addTodo"}`} type="submit">
-          {edit ? (
-            <AiOutlineEdit fontSize="18px" />
-          ) : (
+        <div className="inputBtn">
+          <input
+            className="inputData"
+            type="text"
+            value={input}
+            onChange={changeHandler}
+            placeholder="New task"
+            ref={inputRef}
+            // maxLength="100"
+          />
+          <button title="Add" className="btn addTodo" type="submit">
             <AiOutlinePlus fontSize="18px" />
-          )}
-        </button>
+          </button>
+          <button
+            title="Advanced"
+            type="button"
+            onClick={advancedHandler}
+            className="btn addTodo"
+          >
+            <AiOutlineMenu fontSize="18px" />
+          </button>
+        </div>
+        <div className="searchBar">
+          <input
+            className="inputData searchInput"
+            type="text"
+            value={input}
+            onChange={changeHandler}
+            placeholder="Search..."
+          />
+        </div>
       </div>
-      <p
-        style={{ cursor: "pointer" }}
-        onClick={advancedHandler}
-        className="advancedBtn"
-      >
-        Advanced
-      </p>
+      {/* <div className="sortWrapper">
+        <span>
+          Notes: <span className="showNote">Show</span>
+          <span>/</span>
+          <span className="showNote">Hide</span>
+        </span>
+        <span>
+          <Select
+            defaultValue={SortOptions[0]}
+            value={SortOptions[prioriry.selectedOption]}
+            onChange={priorityChange}
+            options={SortOptions}
+            styles={customStylesSort}
+          />
+        </span>
+      </div> */}
       <div
         className="advStyle"
         {...(advancedMenu.isShowMenu
@@ -182,7 +217,7 @@ const TodoForm = ({ edit, submitTodo }) => {
                 styles={tagsStyles}
               />
             </div>
-            <button className="btn btnAddTag" type="submit">
+            <button title="Add Tag" className="btn btnAddTag" type="submit">
               <AiOutlineTag fontSize="18px" />
             </button>
           </div>

@@ -6,12 +6,11 @@ const DateTimePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <DatePicker
+      todayButton="Select today"
       className="inputData datePickerStyle"
       selected={startDate}
       onChange={(date) => setStartDate(date)}
-      timeInputLabel="Time:"
-      dateFormat="yyyy/MM/dd hh:mm aa"
-      showTimeInput
+      dateFormat="yyyy/MM/dd"
     />
   );
 };
