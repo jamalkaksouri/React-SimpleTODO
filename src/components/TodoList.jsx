@@ -72,9 +72,9 @@ const TodoList = ({
 
   const showStickySortHandler = () => {
     const getScrollTopValue = document.querySelector("#todoDataList").scrollTop;
-    if (getScrollTopValue > 3) {
+    if (getScrollTopValue > 1) {
       setSticky(true);
-    } else if (getScrollTopValue <= 0) {
+    } else if (getScrollTopValue <= 1) {
       setSticky(false);
     }
   };

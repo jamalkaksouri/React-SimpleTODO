@@ -8,19 +8,43 @@ import getCurrentDateTime from "../common/dateTimeFunc";
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (input) => {
+  const addTodo = (inputData, priorityValue, dueDateData, notesMessageData) => {
     const newTodo = {
       id: uuidv4(),
-      text: input,
+      text: inputData,
+      dueDate: dueDateData,
       date: getCurrentDateTime(),
+      content: notesMessageData,
       isCompleted: false,
-      content: input,
-      color: "#fff",
-      contentColor: "#fff",
-      counter: 0,
+      color: selectedPriorityColor(priorityValue.selectedOption.value)[0].color,
+      contentColor: selectedPriorityColor(priorityValue.selectedOption.value)[0]
+        .contentColor,
+      counter: priorityValue,
       noteIsShow: false,
     };
     setTodos([...todos, newTodo]);
+  };
+
+  const selectedPriorityColor = (pValue) => {
+    let colors = [{ color: "#fff", contentColor: "#fff" }];
+    switch (pValue) {
+      case "0":
+        colors = [{ color: "#fff", contentColor: "#fff" }];
+        break;
+      case "1":
+        colors = [{ color: "#ff7700", contentColor: "#FFF2E6" }];
+        break;
+      case "2":
+        colors = [{ color: "#ff3333", contentColor: "#FFEEEE" }];
+        break;
+      case "-1":
+        colors = [{ color: "#3377ff", contentColor: "#EBF1FF" }];
+        break;
+      default:
+        colors = [{ color: "#fff", contentColor: "#fff" }];
+        break;
+    }
+    return colors;
   };
 
   const completeTodo = (id) => {

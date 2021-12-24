@@ -33,6 +33,7 @@
   flex-wrap: wrap;
   border-radius: 0px 4px 4px 0px;
   background-color: #fff;
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.22, 0.91);
 }
 
 .todoIsCompleted {
@@ -106,11 +107,11 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: justify;
+  white-space: pre;
   line-height: 1.65rem;
 }
 
 .todoText {
-  cursor: pointer;
   display: flex;
   width: 0;
   overflow: hidden;
@@ -265,7 +266,7 @@ header {
   width: 100%;
   justify-content: center;
   padding-bottom: 10px;
-  height: 40px;
+  height: 50px;
 }
 
 header span:not(.wrapperNav) {
@@ -379,6 +380,7 @@ header span:not(.wrapperNav) {
   left: 0;
   right: 0;
   transition: all 1s cubic-bezier(0.18, 0.89, 0.22, 1.01);
+  z-index: 9999;
 }
 
 .sortWrapperSticky {
@@ -495,6 +497,10 @@ header span:not(.wrapperNav) {
   color: #fff !important;
   font-weight: bold;
   font-size: 0.944rem;
+}
+
+.react-datepicker-popper {
+  z-index: 1002 !important;
 }
 
 label {

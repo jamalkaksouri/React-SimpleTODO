@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { AiOutlinePlus, AiOutlineMenu, AiOutlineTag } from "react-icons/ai";
-import DateTimePicker from "./DateTimePicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import getAbsolutlyDate from "../common/dateTimeConverter";
 
 const PriorityOptions = [
   { value: "2", label: "+2" },
@@ -78,9 +80,14 @@ const tagsStyles = {
 };
 
 const TodoForm = ({ edit, submitTodo, selectedOption }) => {
-  const [input, setInput] = useState(edit ? edit.text : "");
-  const [prioriry, setPrioriry] = useState({ selectedOption: null });
+  // const [input, setInput] = useState(edit ? edit.text : "");
+  const [input, setInput] = useState("");
+  const [noteMessage, setNoteMessage] = useState("");
+  const [prioriry, setPrioriry] = useState({
+    selectedOption: PriorityOptions[2],
+  });
   const [advancedMenu, setAdvancedMenu] = useState({ isShowMenu: false });
+  const [startDate, setStartDate] = useState(new Date());
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current.focus();
@@ -97,6 +104,10 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
     setInput(e.target.value);
   };
 
+  const noteMessageHandler = (e) => {
+    setNoteMessage(e.target.value);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (!input) {
@@ -104,8 +115,9 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
       inputRef.current.focus();
       return;
     }
-    submitTodo(input);
+    submitTodo(input, prioriry, getAbsolutlyDate(startDate), noteMessage);
     setInput("");
+    setNoteMessage("");
     inputRef.current.focus();
   };
 
@@ -124,7 +136,7 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
             onChange={changeHandler}
             placeholder="New task"
             ref={inputRef}
-            // maxLength="100"
+            maxLength="150"
           />
           <button title="Add" className="btn addTodo" type="submit">
             <AiOutlinePlus fontSize="18px" />
@@ -142,7 +154,7 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
           <input
             className="inputData searchInput"
             type="text"
-            value={input}
+            // value={input}
             onChange={changeHandler}
             placeholder="Search..."
           />
@@ -177,7 +189,13 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
           </span>
           <span style={{ marginLeft: "10px" }}>
             Due
-            <DateTimePicker />
+            <DatePicker
+              todayButton="Select today"
+              className="inputData datePickerStyle"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="yyyy/MM/dd"
+            />
           </span>
         </div>
         <label htmlFor="">Note</label>
@@ -186,6 +204,8 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
           placeholder="Note..."
           cols="30"
           rows="8"
+          value={noteMessage}
+          onChange={noteMessageHandler}
         />
         <div className="tagsWrapper">
           <label htmlFor="">Tags</label>
@@ -201,7 +221,12 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
                 styles={tagsStyles}
               />
             </div>
-            <button title="Add Tag" className="btn btnAddTag" type="submit">
+            <button
+              title="Add Tag"
+              disabled="disabled"
+              className="btn btnAddTag"
+              type="submit"
+            >
               <AiOutlineTag fontSize="18px" />
             </button>
           </div>

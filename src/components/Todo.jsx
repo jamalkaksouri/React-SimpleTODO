@@ -9,6 +9,7 @@ import {
 } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import checkNull from "../common/checkNullValue";
 
 const Todo = ({
   todo,
@@ -25,7 +26,7 @@ const Todo = ({
         borderLeft: `${
           todo.isCompleted
             ? "1px solid rgb(225, 225, 225)"
-            : todo.counter === 0
+            : todo.counter.selectedOption.value === "0"
             ? "1px solid #e1e1e1"
             : `3px solid ${todo.color}`
         }`,
@@ -36,14 +37,14 @@ const Todo = ({
           borderLeft: `${
             todo.isCompleted
               ? "1px solid rgb(225, 225, 225)"
-              : todo.counter === 0
+              : todo.counter.selectedOption.value === "0"
               ? "1px solid #e1e1e1"
               : `3px solid ${todo.color}`
           }`,
         },
       })}
     >
-      {todo.counter !== 0 && (
+      {todo.counter.selectedOption.value !== "0" && (
         <span
           className="periorityTodo"
           {...(todo.noteIsShow
@@ -51,25 +52,48 @@ const Todo = ({
                 style: {
                   display: `${todo.isCompleted ? "none" : "block"}`,
                   backgroundColor: `${todo.isCompleted ? "none" : todo.color}`,
-                  marginLeft: `${todo.counter < 0 && "-20px"}`,
-                  padding: `${todo.counter < 0 && "3px 3px 3px 7px"}`,
+                  marginLeft: `${
+                    todo.counter.selectedOption.value < 0 && "-20px"
+                  }`,
+                  padding: `${
+                    todo.counter.selectedOption.value < 0 && "3px 3px 3px 7px"
+                  }`,
                 },
               }
             : {
                 style: {
                   display: `${todo.isCompleted ? "none" : "block"}`,
                   backgroundColor: `${todo.isCompleted ? "none" : todo.color}`,
-                  marginLeft: `${todo.counter < 0 && "-20px"}`,
-                  padding: `${todo.counter < 0 && "3px 3px 3px 7px"}`,
+                  marginLeft: `${
+                    todo.counter.selectedOption.value < 0 && "-20px"
+                  }`,
+                  padding: `${
+                    todo.counter.selectedOption.value < 0 && "3px 3px 3px 7px"
+                  }`,
                 },
               })}
         >
-          {todo.counter < 0 ? todo.counter : "+" + todo.counter}
+          {todo.counter.selectedOption.value < 0
+            ? todo.counter.selectedOption.value
+            : "+" + todo.counter.selectedOption.value}
         </span>
       )}
       <div className={`${todo.isCompleted ? "completed" : ""}`}>
         <div className="todoIcons">
-          <span onClick={noteShowHide}>
+          <span
+            onClick={noteShowHide}
+            {...(checkNull(todo.content)
+              ? {
+                  style: {
+                    visibility: "hidden",
+                  },
+                }
+              : {
+                  style: {
+                    visibility: "visible",
+                  },
+                })}
+          >
             {todo.noteIsShow ? (
               <AiOutlineCaretDown color="#b2b2b2" />
             ) : (
@@ -106,7 +130,7 @@ const Todo = ({
             style={{ color: "#777", fontWeight: "500", fontSize: "15px" }}
             className="dateTodo"
           >
-            Due: {todo.date.slice(0, -4)}
+            Due: {todo.dueDate.slice(0, -4)}
           </span>
 
           <span
