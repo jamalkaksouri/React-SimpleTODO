@@ -1,9 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { AiOutlinePlus, AiOutlineMenu, AiOutlineTag } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMenu } from "react-icons/ai";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
-import makeAnimated from "react-select/animated";
 import getAbsolutlyDate from "../common/dateTimeConverter";
 
 const PriorityOptions = [
@@ -13,14 +12,6 @@ const PriorityOptions = [
   { value: "-1", label: "-1" },
 ];
 
-const TagsOptions = [
-  { value: "tag1", label: "tag1" },
-  { value: "tag2", label: "tag2" },
-  { value: "tag3", label: "tag3" },
-];
-
-const animatedComponents = makeAnimated();
-
 const customStyles = {
   control: (base) => ({
     ...base,
@@ -28,43 +19,15 @@ const customStyles = {
     border: "1px solid #ccc",
     boxShadow: "0 0 0 1px #ccc",
     ":hover": {
-      border: "1px solid #009688 !important",
-      boxShadow: "0 0 0 1px #009688 !important",
+      border: "1px solid #6255a5 !important",
+      boxShadow: "0 0 0 1px #6255a5 !important",
     },
   }),
   option: (base, state) => ({
     ...base,
-    backgroundColor: state.isSelected && "#009688",
+    backgroundColor: state.isSelected && "#6255a5",
     ":active": {
-      backgroundColor: state.isSelected && "#009688",
-    },
-  }),
-  menu: (base) => ({
-    ...base,
-  }),
-  menuList: (base) => ({
-    ...base,
-  }),
-  indicatorSeparator: (base) => ({
-    ...base,
-    width: 2,
-  }),
-};
-const tagsStyles = {
-  control: (base) => ({
-    ...base,
-    border: "1px solid #ccc",
-    boxShadow: "0 0 0 1px #ccc",
-    ":hover": {
-      border: "1px solid #009688 !important",
-      boxShadow: "0 0 0 1px #009688 !important",
-    },
-  }),
-  option: (base, state) => ({
-    ...base,
-    backgroundColor: state.isSelected && "#009688",
-    ":active": {
-      backgroundColor: state.isSelected && "#009688",
+      backgroundColor: state.isSelected && "#6255a5",
     },
   }),
   menu: (base) => ({
@@ -207,30 +170,6 @@ const TodoForm = ({ edit, submitTodo, selectedOption }) => {
           value={noteMessage}
           onChange={noteMessageHandler}
         />
-        <div className="tagsWrapper">
-          <label htmlFor="">Tags</label>
-          <div className="tagsBtnWrapper">
-            <div className="btnAddTags">
-              <Select
-                className="tagsInput"
-                closeMenuOnSelect={false}
-                components={animatedComponents}
-                placeholder="select tags"
-                isMulti
-                options={TagsOptions}
-                styles={tagsStyles}
-              />
-            </div>
-            <button
-              title="Add Tag"
-              disabled="disabled"
-              className="btn btnAddTag"
-              type="submit"
-            >
-              <AiOutlineTag fontSize="18px" />
-            </button>
-          </div>
-        </div>
       </div>
     </form>
   );

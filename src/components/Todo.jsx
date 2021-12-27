@@ -102,7 +102,7 @@ const Todo = ({
           </span>
           <span style={{ marginLeft: 0, marginRight: "5px" }}>
             {todo.isCompleted ? (
-              <AiOutlineCheckSquare onClick={onComplete} color="#009688" />
+              <AiOutlineCheckSquare onClick={onComplete} color="#6255a5" />
             ) : (
               <AiOutlineBorder onClick={onComplete} color="#5c5c5c" />
             )}
@@ -144,17 +144,17 @@ const Todo = ({
           <span>
             <AiOutlineBars
               onClick={changeTodo}
-              color="#009688"
+              color="#6255a5"
               title="Priority"
             />
           </span>
           <span>
-            <AiOutlineEdit onClick={onEdit} color="#009688" title="Edit" />
+            <AiOutlineEdit onClick={onEdit} color="#6255a5" title="Edit" />
           </span>
           <span style={{ marginRight: "8px" }}>
             <AiOutlineDelete
               onClick={onDelete}
-              color="#009688"
+              color="#6255a5"
               title="Delete"
             />
           </span>

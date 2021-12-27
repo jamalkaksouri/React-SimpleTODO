@@ -43,15 +43,15 @@ const TodoList = ({
       border: "1px solid #ccc",
       boxShadow: "0 0 0 1px #ccc",
       ":hover": {
-        border: "1px solid #009688 !important",
-        boxShadow: "0 0 0 1px #009688 !important",
+        border: "1px solid #6255a5 !important",
+        boxShadow: "0 0 0 1px #6255a5 !important",
       },
     }),
     option: (base, state) => ({
       ...base,
-      backgroundColor: state.isSelected && "#009688",
+      backgroundColor: state.isSelected && "#6255a5",
       ":active": {
-        backgroundColor: state.isSelected && "#009688",
+        backgroundColor: state.isSelected && "#6255a5",
       },
     }),
     menu: (base) => ({
@@ -62,7 +62,7 @@ const TodoList = ({
     }),
     singleValue: (base) => ({
       ...base,
-      color: "#009688",
+      color: "#6255a5",
     }),
     indicatorSeparator: (base) => ({
       ...base,
