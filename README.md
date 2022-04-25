@@ -1,9 +1,8 @@
 <p align="center">
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/images/img1.png">
-  <img src="https://github.com/jamalkaksouri/React-SimpleTODO/blob/master/public/images/img2.png">
+  ![img1](https://user-images.githubusercontent.com/12379287/165104808-70e48c0e-b1b6-4862-9395-93d91d6a1796.png)
+  ![img2](https://user-images.githubusercontent.com/12379287/165104873-626dbd15-e44b-476b-9d48-a2600a2d5293.png)
 </p>
   
-
 
 # Getting Started with Create React App
 
